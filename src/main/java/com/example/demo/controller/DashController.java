@@ -21,7 +21,7 @@ import com.example.demo.service.PostjobService;
 @Controller
 public class DashController {
 
-    private static final ArrayList<Empl> employees = new ArrayList<>();
+    private final ArrayList<Empl> employees = new ArrayList<>();
 
     @Autowired
     private PostjobService service;
