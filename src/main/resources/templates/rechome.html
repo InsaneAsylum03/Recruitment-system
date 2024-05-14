@@ -29,7 +29,7 @@
         <a href="javascript:void(0)" onclick="loadDynamicPage();" target="cont">Dashboard</a>
 
         <a href="new_disp" target="cont" >Hiring</a>
-        <button value="Log Out">Log Out</button>
+        <button th:action="@{/logout}" value="Log Out">Log Out</button>
     </div>
     <div class="content">   
         <iframe name="cont" height="590px" width="1125px"></iframe>

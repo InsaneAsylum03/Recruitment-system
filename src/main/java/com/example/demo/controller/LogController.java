@@ -13,6 +13,9 @@ import com.example.demo.domain.Login;
 import com.example.demo.service.LogService;
 import com.example.demo.service.RegService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 @Controller
 
 public class LogController {
@@ -65,6 +68,12 @@ public class LogController {
         } else {
             return "redirect:/disp2";
         }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().invalidate();
+        return "redirect:/log";
     }
 
     @GetMapping("/disp2")
