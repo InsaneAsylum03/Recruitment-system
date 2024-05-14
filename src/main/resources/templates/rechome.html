@@ -16,6 +16,9 @@
         <a class="logo">
             <img src="imgs/logo.png" height="35px">
         </a>
+        <header>
+            <h1>Welcome, <span th:text="${session.loggedInUser}"></span>!</h1>
+        </header>
         <div class="header-right">
           <a class="active" href="/rechome">Home</a>
           <a href="reccont.html">Contact</a>

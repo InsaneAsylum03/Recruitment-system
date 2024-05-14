@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 // import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.domain.Login;
 import com.example.demo.service.LogService;
 import com.example.demo.service.RegService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 
@@ -28,14 +31,13 @@ public class LogController {
     }
 
     @PostMapping("/log")
-    public String login(@ModelAttribute("user") Login user) {
+    public String login(@ModelAttribute("user") Login user, Model model, HttpSession session) {
         Login oauthUser = service.log(user.getUsername(), user.getPassword());
-        // username = user.getUsername();
-        // model1.addAttribute("loggedInUser", username);
-        System.out.print(oauthUser);
         if (Objects.nonNull(oauthUser)) {
+            session.setAttribute("loggedInUser", user.getUsername());
             return "redirect:/rechome";
         } else {
+            model.addAttribute("error", "Invalid username or password");
             return "redirect:/";
         }
     }
