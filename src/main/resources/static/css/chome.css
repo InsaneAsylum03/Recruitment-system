@@ -129,10 +129,10 @@ div.content {
 
 .sidebar button{
   padding-top: 10px;
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
   width: 100%;
-  bottom: 110px;
-  position: absolute;
+  /* bottom: 110px; */
+  /* position: absolute; */
   border: transparent;
 }
 

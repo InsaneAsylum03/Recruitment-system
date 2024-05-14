@@ -74,7 +74,7 @@ public class LogController {
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().invalidate();
-        return "redirect:/log";
+        return "redirect:/";
     }
 
     @GetMapping("/disp2")
