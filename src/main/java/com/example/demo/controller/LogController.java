@@ -14,12 +14,9 @@ import com.example.demo.domain.Login;
 import com.example.demo.service.LogService;
 import com.example.demo.service.RegService;
 
-<<<<<<< HEAD
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-=======
 import jakarta.servlet.http.HttpSession;
->>>>>>> a7e9ffe2e3797141c064e43da25d278dc43160ce
 
 @Controller
 
