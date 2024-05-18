@@ -55,7 +55,7 @@
     </style>
 </head>
 <body>
-    <h1>Job List</h1>
+    <h1>Job List of <span th:text="${session.loggedInUser}"></span></h1>
 
     <form th:action="@{/add-employee}" method="post" th:object="${newEmployee}">
         <input type="text" th:field="*{role}" placeholder="Role"/>
@@ -66,7 +66,7 @@
     <br/><br/>
 
     <div id="flash-cards">
-        <div th:each="employee : ${employees}" class="flash-card">
+        <div th:each="employee : ${employees}" th:object="${employee}" th:if="${employee.uname} == ${session.loggedInUser}" class="flash-card">
             <!-- Form to remove employee -->
             <form th:action="@{/remove-employee}" method="post">
                 <input type="hidden" name="role" th:value="${employee.role}" />

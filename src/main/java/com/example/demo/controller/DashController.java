@@ -13,10 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.domain.Empl;
+import com.example.demo.domain.Login;
 import com.example.demo.service.PostjobService;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class DashController {
@@ -25,6 +28,15 @@ public class DashController {
 
     @Autowired
     private PostjobService service;
+
+    @Autowired
+    public HttpSession session;
+
+    @RequestMapping(value = "user")
+    public String user(HttpSession session){
+        session.setAttribute("LoggedInUser", LogController.uname);
+        return "redirect:/";
+    }
 
     @GetMapping("/dynamic")
     public String dynamic(Model model) {
@@ -41,13 +53,16 @@ public class DashController {
     }
 
     @GetMapping("/dash")
-    public String dash() {
+    public String dash(HttpSession session) {
+        session.setAttribute("LoggedInUser", LogController.uname);
         return "dash";
     }
 
     @PostMapping("/add-employee")
-    public String addEmployee(@ModelAttribute("emp") Empl emp) {
-        service.saveJob(emp.role, emp.salary, emp.phno);
+    public String addEmployee(@ModelAttribute("emp") Empl emp, HttpSession session) {
+        emp.uname = LogController.uname;
+        service.saveJob(emp.role, emp.salary, emp.phno, LogController.uname);
+        session.setAttribute("LoggedInUser", LogController.uname);
         employees.add(emp);
         return "redirect:/dynamic";
     }
@@ -62,6 +77,7 @@ public class DashController {
             job.put("Role", rs.getString(1));
             job.put("Salary", rs.getString(2));
             job.put("Phno", rs.getString(3));
+            job.put("Uname", rs.getString(4));
             jobs.add(job);
         }
 

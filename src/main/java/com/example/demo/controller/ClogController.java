@@ -29,7 +29,6 @@ public class ClogController {
 
         System.out.print(oauthUser);
         if (Objects.nonNull(oauthUser)) {
-            // model.addAttribute("loggedInUser", user.getUsername());
             return "candhome";
         } else {
             return "redirect:/";

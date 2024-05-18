@@ -13,4 +13,5 @@ public class Empl {
     public String role;
     public String salary;
     public String phno;
+    public String uname;
 }

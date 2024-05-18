@@ -21,10 +21,10 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 
 public class LogController {
-
-    public String username;
     @Autowired
     private LogService service;
+
+    public static String uname;
 
     @GetMapping("/")
     public String api() {
@@ -35,6 +35,7 @@ public class LogController {
     @PostMapping("/log")
     public String login(@ModelAttribute("user") Login user, Model model, HttpSession session) {
         Login oauthUser = service.log(user.getUsername(), user.getPassword());
+        uname = user.getUsername();
         if (Objects.nonNull(oauthUser)) {
             session.setAttribute("loggedInUser", user.getUsername());
             return "redirect:/rechome";
@@ -54,7 +55,6 @@ public class LogController {
 
     @GetMapping("/register")
     public String api2() {
-
         return "register";
     }
 

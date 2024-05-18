@@ -24,11 +24,12 @@ public class PostjobService {
         this.postjobRepository = postjobRepository;
     }
 
-    public void saveJob(String role, String salary, String phno) {
+    public void saveJob(String role, String salary, String phno, String uname) {
         Empl e = new Empl();
         e.role = role;
         e.salary = salary;
         e.phno = phno;
+        e.uname = uname;
         postjobRepository.save(e);
     }
 
