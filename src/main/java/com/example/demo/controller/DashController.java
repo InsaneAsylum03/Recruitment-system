@@ -74,10 +74,11 @@ public class DashController {
 
         while (rs.next()) {
             Map<String, String> job = new HashMap<>();
-            job.put("Role", rs.getString(1));
-            job.put("Salary", rs.getString(2));
-            job.put("Phno", rs.getString(3));
-            job.put("Uname", rs.getString(4));
+            job.put("Uname", rs.getString(1));
+            job.put("Role", rs.getString(2));
+            job.put("Salary", rs.getString(3));
+            job.put("Phno", rs.getString(4));
+
             jobs.add(job);
         }
 

@@ -35,7 +35,7 @@ public class PostjobService {
 
     public void remJob(String role) {
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/college", "root", "");
+                "jdbc:mysql://localhost:3306/recruit", "root", "");
                 PreparedStatement preparedStatement = conn.prepareStatement("delete from job where role=?")) {
 
             preparedStatement.setString(1, role);
@@ -50,7 +50,7 @@ public class PostjobService {
 
     public ResultSet retJob() throws SQLException {
         Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/college", "root", "");
+                "jdbc:mysql://localhost:3306/recruit", "root", "");
         PreparedStatement preparedStatement = conn.prepareStatement("select * from job");
 
         ResultSet rs = preparedStatement.executeQuery();
