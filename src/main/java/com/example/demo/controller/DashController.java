@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.domain.Empl;
-import com.example.demo.domain.Login;
+// import com.example.demo.domain.Login;
 import com.example.demo.service.PostjobService;
 import jakarta.servlet.http.HttpSession;
 
@@ -33,7 +33,7 @@ public class DashController {
     public HttpSession session;
 
     @RequestMapping(value = "user")
-    public String user(HttpSession session){
+    public String user(HttpSession session) {
         session.setAttribute("LoggedInUser", LogController.uname);
         return "redirect:/";
     }
